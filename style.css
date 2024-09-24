@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Reddit+Sans+Condensed:wght@200..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: "Reddit Sans Condensed", sans-serif;
+}
+
+.comiendo {
+    width: 100px;
+    margin-top: -20px;
+}
+
+.titulo {
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+}
+
+.titulo span {
+    display: inline-block;
+    animation: colorChange 15s infinite;
+}
+
+@keyframes colorChange {
+    0% { color: coral; }
+    10% { color: rgb(173, 171, 171); }
+    20% { color: pink; }
+    30% { color: lightskyblue; }
+    40% { color: burlywood; }
+    50% { color: greenyellow; }
+    60% { color: palevioletred; }
+    70% { color: gray; }
+    80% { color: chocolate; }
+    90% { color: lightcoral; }
+    100% { color: coral; }
+}
+
+.texto1 {
+    margin-top: 25px;
+}
+
+.click {
+    width: 20px;
+}
+
+.yum {
+    width: 30px;
+}
+
+.food {
+    width: 30px;
+    margin-top: -5px;
+}
+
+.btn-group-vertical .btn {
+    margin-bottom: 10px;
+}
+
+.btn1 {
+    font-size: 14px;
+    background-color: pink;
+    border-color: white;
+    color: black;
+}
+
+.btn2 {
+    font-size: 14px;
+    background-color: burlywood;
+    border-color: white;
+    color: black;
+}
+
+.btn1:hover {
+    background-color: palevioletred;
+}
+
+.btn2:hover {
+    background-color: chocolate;
+}
+
+.btn1:hover, .btn2:hover {
+    color: white;
+    border-color: white;
+}
+
+.texto0 {
+    font-family: "Nerko One", cursive;
+    font-weight: 300;
+    color: lightblue;
+}
+
+.agua {
+    width: 60px;
+}
+
+.recetas {
+    width: 100px;
+    margin-top: -40px;
+}
+
+.texto3 {
+    display: inline-block;
+    color: white;
+}
+
+.texto3 img {
+    vertical-align: middle;
+}
+
+.texto3 span {
+    display: inline-block;
+}
+
+.texto3 span span {
+    display: inline-block;
+    animation: jump 1s ease infinite;
+    animation-iteration-count: 50;
+    white-space: pre;
+}
+
+@keyframes jump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.ejercicio {
+    margin-top: -40px;
+    width: 40px;
+}
+
+.brazo{
+    width: 35px;
+    margin-top: -20px;
+}
+
+.swal2-title {
+    color: sandybrown !important;
+    font-family: "Nerko One", cursive;
+}
+
+.html, .recipe-link {
+    color: white !important;
+    font-family: "Nerko One", cursive;
+    border: none;
+}
+
+.swal2-confirm, .swal2-cancel {
+    font-family: "Nerko One", cursive;
+    
+}

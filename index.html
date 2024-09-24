@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Dieta</title>
+</head>
+<body>
+    
+    <div class="container text-center mt-5">
+        <h1 class="titulo">
+            <span class="titulo1">C</span>o<span class="titulo2">s</span>i<span class="titulo3">t</span>a<span class="titulo4">s</span>
+            <span class="titulo5">p</span>a<span class="titulo6">r</span>a
+            <span class="titulo7">a</span>y<span class="titulo8">u</span>d<span class="titulo9">a</span>r<span class="titulo10">t</span>e
+            <span class="titulo11">c</span>o<span class="titulo12">n</span>
+            <span class="titulo13">t</span>u
+            <span class="titulo14">d</span>i<span class="titulo15">e</span>t<span class="titulo16">a</span>
+        </h1>
+        
+        <img class="comiendo" src="img/comiendo.gif" alt="comiendo">
+        
+        <br>
+        <p class="texto1"> En el primer botón, podrás visualizar las comidas permitidas para ti mi amor, <br>
+            mientras que en el segundo botón tendrás acceso a un verificador de alimentos, <br>
+            el cual te facilitará la búsqueda para determinar si un alimento es apto para tu consumo amor. <br> 
+            Haz clic en la opción que desees utilizar en este momento... 
+            <img src="img/click.gif" alt="click" class="click img-fluid my-4">
+        </p>
+        
+        <div class="btn-group d-md-inline-flex" role="group">
+            <button type="button" class="btn1 btn btn-primary" onclick="mostrarAlerta()">
+                <img class="yum" src="img/yum.gif" alt="yum"> Alimentos sanos
+            </button>
+            <button type="button" class="btn2 btn btn-secondary" onclick="window.location.href='//mr-y-mrs-debail.github.io/VerificadorMv/'">
+                <img class="food" src="img/food.gif" alt="food"> Verificador de alimentos
+            </button>
+        </div>     
+        
+        <div class="container">
+            <p class="texto0">Tengo un consejo hidratante para ti →
+                <img id="alertButton" style="cursor: pointer;" src="img/agua.png" alt="agua" class="agua img-fluid my-4">
+            </p>
+
+            <div id="recetasDiv">
+                <img class="recetas" id="recetasButton" style="cursor: pointer;" src="img/recetas.png" alt="recetas" class="img-fluid my-4">
+            </div>
+
+            <br>
+
+            <p class="texto3"><img class="ejercicio" src="img/ejercicio.png" alt="ejercicio"><span>¡Buena suerte con tu dieta, mi amor!</span> <img class="brazo" src="img/brazo.png" alt="brazo"></p>
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+    <script>
+        document.getElementById('alertButton').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Mi amor!',
+                html: 'Recuerda consumir al menos cuatro botellas de agua pura de 500 ml cada una al día amor. <br> Si puedes beber más, estaría bien; de lo contrario, esa cantidad es suficiente amor.',
+                imageUrl: 'img/water.gif',
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: 'Agua',
+                confirmButtonText: 'Confirmar',
+                confirmButtonColor: 'blue',
+                allowOutsideClick: false,
+                allEscapeKey: false,
+                allEnterKey: false,
+                stopKeydownPropagation: false
+            });
+        });
+
+    </script>
+    
+    <script>
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const span = document.querySelector('.texto3 span');
+            const textContent = span.textContent;
+            span.innerHTML = '';
+            
+            for (let i = 0; i < textContent.length; i++) {
+                const charSpan = document.createElement('span');
+                charSpan.textContent = textContent[i];
+                charSpan.style.animationDelay = `${i * 0.2}s`;
+                span.appendChild(charSpan);
+            }
+        });
+        
+    </script>
+    
+    <script>
+        let imagenes = ["img/1.png", "img/2.png", "img/3.png"];
+        let textos = [
+            "Recuerda comer siempre sano mi amor.",
+            "Te amoOOOOOOO!",
+            "Nunca olvides que eres lo mejor de mi vida."
+        ];
+        let indice = 0;
+    
+        function mostrarAlerta() {
+            Swal.fire({
+                title: `<span style="color: white;">${textos[indice]}</span>`,
+                html: `<img src="${imagenes[indice]}" alt="Imagen" style="width:180px; margin:10px;">`,
+                showCloseButton: true,
+                background: "black",
+                confirmButtonColor: 'blue',
+                allowOutsideClick: false,
+                allEscapeKey: false,
+                allEnterKey: false,
+                stopKeydownPropagation: false,
+                confirmButtonText: 'Siguiente',
+                preConfirm: () => {
+                    indice = (indice + 1) % imagenes.length;
+                    if (indice === 0) {
+                        Swal.close();
+                    } else {
+                        mostrarAlerta();
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script>
+    
+        document.getElementById('recetasButton').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Recetas para ti mi amor!',
+                html: `
+                <ul style="list-style-type: none;"> <br>
+                <li><a href="#" class="recipe-link" data-recipe="pescado">Pescado</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="jugo-verde">Jugo Verde</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="licuado-frutas">Licuado de Frutas</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="agua">Agua para Hidratarte</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="huevos-duros">Huevos Duros</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="huevos-estrellados">Huevos Estrellados</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="huevo-torta">Huevo en Torta</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="omelets">Omelets</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="ensaladas">Ensaladas</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="snacks">Snacks que llenan más</a></li>
+                <li><a href="#" class="recipe-link" data-recipe="suerte">♡</a></li>
+
+                </ul>
+                `,
+                background: 'black',
+                showCancelButton: true,
+                cancelButtonText: 'Cerrar',
+                cancelButtonColor: 'coral',
+                allowOutsideClick: false,
+                allEscapeKey: false,
+                allEnterKey: false,
+                stopKeydownPropagation: false,
+                showConfirmButton: false,
+                customClass: {
+                    title: 'swal2-title',
+                    confirmButton: 'swal2-confirm',
+                    cancelButton: 'swal2-cancel'
+                }
+            });
+
+            document.querySelectorAll('.recipe-link').forEach(function(element) {
+                element.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const recipe = event.target.getAttribute('data-recipe');
+                    showRecipeAlert(recipe);
+                });
+            });
+            
+            document.getElementById('exit').addEventListener('click', function() {
+                Swal.close();
+            });
+            
+        });
+        
+        function showRecipeAlert(recipe) {
+            let title, text;
+            switch (recipe) {
+                case 'pescado':
+                    title = 'Pescado de Tilapia';
+                    html = 'Lava con agua tu pescado. <br> Agrega sal y pimienta. <br> Opcional agrega albahaca o limón. <br> calienta tu sárten y con un poco de aceite de aguacate, fríelo hasta que dore por ambos lados. <br> Acompañalo con tu ensalada favorita o con verduras y tu limonada con poca azúcar.';
+                    imageUrl = 'img/tilapia.jpg';
+                    break;
+                case 'jugo-verde':
+                    title = 'Jugo Verde';
+                    html = 'Ingredientes: <br> Utiliza la mitad de un pepino <br> una manzana verde entera <br> el jugo de un limón <br> una ramita de apio <br> y un puñito de perejil. <br> Todo lo licuas mi amor <br> con 1 1/2 taza de agua mi amor. <br> Tómalo en ayunas.';
+                    imageUrl = 'img/JugoVerde.jpeg';
+                    break;
+                case 'licuado-frutas':
+                    title = 'Licuados de frutas';
+                    html = 'En tu licuadora o extractor de jugos puedes hacer diferentes licuados mi amor, prueba estas combinaciones mi amor: <br> Papaya con fresa. <br> Piña con papaya. <br> Fresa con banano. <br> Papaya, fresas y cerezas. <br> Papaya, piña y melón. <br> Mango y piña. <br> Manzana y kiwi. <br> Manzana roja con zanahoria. <br> Limón, pepino y hojitas de menta. <br> Cerezas, arándanos, fresa y leche. <br> En todos puedes utilizar leche o agua, endulzalo con poca azúcar o mejor sino usas azúcar pero es a tu gusto amor.';
+                    imageUrl = 'img/licuados.webp';
+                    break;
+                case 'agua':
+                    title = 'Agua súper hidratante para mi esposo';
+                    html = 'En tu botellita de agua pura o un vaso de agua, añade un poquito de sal y el jugo de un limón (puede ser limón verde o amarillo). Esto te ayudará a hidratarte súper bien mi amor.';
+                    imageUrl = 'img/agua.avif';
+                    break;
+                case 'huevos-duros':
+                    title = 'Tiempo exacto para unos huevos duros perfectos';
+                    html = 'Pon a hervir una ollita con agua <br> (la cantidad de agua debe ser suficiente para cubrir los huevos). <br> Cuando el agua esté hirviendo con muchas burbujitas, pon los huevos que te vayas a comer mi amor con mucho cuidado (no te vayas a quemar) y espera 12 minutos exactos. <br> Luego retíralos del fuego y ponlos en agua fría. <br> Después, retira la cáscara y listo mi amor. <br> Puedes acompañarlos en ensalada, <br> con verduras y vegetales, <br> con fruta, <br> con pan integral, <br> con salsas (de tomate o salsas hechas por ti mismo), <br> con pollo cocido (ensalada de pollo y huevo duro), <br> hay muchas combinaciones sanas mi amor. <br> Sé creativo mi súper esposo.';
+                    imageUrl = 'img/duros.jpg';
+                    break;
+                case 'huevos-estrellados':
+                    title = 'Huevos Estrellados';
+                    html = 'Hazlos con tu aceite de aguacate y con poca sal. <br> Hay muchas recetas mi amor, puedes acompañarlos con salmón, pescado, verduras, salsas, aguacate, pan integral, ensaladas con frutas y verduras. <br>Piensa, piensa como el osito Pooh, son bromas, puedes buscar recetas mi amor. ';
+                    imageUrl = 'img/estrellados.jpg';
+                    break;
+                case 'huevo-torta':
+                    title = 'Huevos en torta';
+                    html = 'Ingredientes: <br> huevos (los que te vayas a comer) <br> un poco de sal <br> Opcional: chile pimiento picado, tomate, cebolla picada, cebollín, zuchinni rallado, zanahoria rallada, queso, jamón de pollo o pavo, espinacas cortadas finamente, hay variedad de ingredientes mi amor. <br> En un platito hondo o trastecito hondo mezcla los huevos y la sal, añade los ingredientes que te vayas a comer y en un sárten con tu aceite de aguacate añade tu mezcla de huevo y cocina por ambos lados y listo mi amor. <br> Solo la cebolla y ajo si vas a utilizarlo (mejor sofríelo con tu aceite de aguacate, sin quemarlo, antes de añadir la mezcla del huevo mi amor) ';
+                    imageUrl = 'img/torta.jpg';
+                    break;
+                case 'omelets':
+                    title = 'Omelets';
+                    html = 'Ingredientes: <br> huevos (los que te vayas a comer) <br> un poco de sal <br> Opcional: chile pimiento, tomate, cebolla, cebollín, zuchinni, zanahoria, queso, jamón de pollo o pavo, espinacas, champiñones, brócoli, hay variedad de ingredientes mi amor. <br> En un platito hondo o trastecito hondo mezcla los huevos y la sal, añade los ingredientes que te vayas a comer o gustes y en un sárten con tu aceite de aguacate añade tu mezcla de huevo y cocina por ambos lados y listo mi amor. <br> Solo la cebolla y ajo si vas a utilizarlo (mejor sofríelo con tu aceite de aguacate, sin quemarlo, antes de añadir la mezcla del huevo mi amor) y si van a utilizar brócoli, que este previamente cocido a tu gusto mi amor.';
+                    imageUrl = 'img/omelet.webp';
+                    break;
+                case 'ensaladas':
+                    title = 'Ensaladas';
+                    html = 'Puedes preparar muchas ensaladas mi amor, pero puedo darte algunas ideas de ingredientes y toppings que puedes añadirle a tu ensalada súper saludable mi amor: <br> Nueces, almendras, frutas, lechuga (todos los tipos de lechuga), espinacas, tomate (todos los tipos de tomate), pepino, zanahoria, aguacate, queso, cebolla morada, pimientos, quinoa, pollo a la plancha o cocido, atún, huevo duro, semillas de chía, arándanos secos, manzana, fresas, uvas, aguacate y aderezos como aceite de oliva, limón o yogur. <br> Sé creativo mi amor, crea tu propia ensalada favorita. <br> Una ensalada mía favorita es: <br> mezclas mango (amarillo), aguacate, lechuga, espinaca, zanahoria rallada, cebolla morada, tomate de manzano, con limón y sal (si gustas almendras pero aquí son muy caras por eso casi no como almendras amor).';
+                    imageUrl = 'img/ensalada.jpg';
+                    break;
+                case 'snacks':
+                    title = 'Snacks que te van a llenar más tu linda pancita mi amor';
+                    html = 'Pepinos pequeños, <br> tomates cherry, <br> zanahorias baby, <br> palitos de apio, <br> manzana (verde o roja), <br> brócoli crudo bien lavado (con un aderezo de yogurt), <br> frutos secos sin sal (almendras, nueces, ciruelas), <br> batidos de frutas como (espinaca, manzana y apio), <br> un yogurt con tu fruta favorita o avena con fruta.';
+                    imageUrl = 'img/snacks.webp';
+                    break;
+                case 'suerte':
+                    title = 'Come súper sanito mi amor';
+                    html = 'Quiero que siempre estés bien de salud mi súper esposo, así que come sanito, mantén tu lindo corazón sano, bebe mucha agua y disfruta tu día a día con una linda sonrisa en tu lindo rostro. <br> ¡Te amOOOOOOOO! <br> Que cada día te sientas más y más sanito, mi amor.';
+                    imageUrl = 'img/Suerte.png';
+                    break;
+                    default:
+                        title = 'Receta';
+                        text = 'Detalles de la receta.';
+                    }
+                    
+                    Swal.fire({
+                        title: title,
+                        html: html,
+                        imageUrl: imageUrl,
+                        imageWidth: 200,
+                        imageHeight: 200,
+                        background: 'black',
+                        showCancelButton: true,
+                        confirmButtonColor: 'gray',
+                        cancelButtonColor: 'coral',
+                        allowOutsideClick: false,
+                        allEscapeKey: false,
+                        allEnterKey: false,
+                        stopKeydownPropagation: false,
+                        confirmButtonText: 'Más recetas',
+                        cancelButtonText: 'Salir',
+                        customClass: {
+                            title: 'swal2-title',
+                            htmlContainer: 'html',
+                            confirmButton: 'swal2-confirm',
+                            cancelButton: 'swal2-cancel'
+                        }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                    document.getElementById('recetasButton').click();
+                }
+            });
+         } 
+    </script>
+    
+</body>
+</html>
